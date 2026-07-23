@@ -1,7 +1,5 @@
 services:
-  - type: web
+  - type: static
     name: live-app-manager-landing
-    runtime: static
-    plan: free
     staticPublishPath: ./
     autoDeployTrigger: commit
