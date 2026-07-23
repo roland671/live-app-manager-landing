@@ -204,6 +204,58 @@
     .tok-str { color: var(--str); }
     .tok-pun { color: #94a3b8; }
 
+    .pricing {
+      margin-top: 2.25rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(94, 234, 212, 0.06), rgba(13, 17, 24, 0.7));
+      padding: 1.35rem 1.25rem 1.4rem;
+    }
+
+    .pricing h2 {
+      margin-bottom: 1rem;
+    }
+
+    .price-rows {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-rows li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(10, 12, 16, 0.55);
+    }
+
+    .price-rows .label {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .price-rows .value {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .pricing .benefit {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      border-left: 2px solid var(--accent);
+      padding-left: 0.85rem;
+    }
+
     .foot {
       margin-top: 3rem;
       font-family: var(--mono);
@@ -319,6 +371,24 @@
         every subsequent track call — new or duplicate — returns
         <strong>HTTP 402 Payment Required</strong> until a payment card is securely
         attached via the dashboard.
+      </p>
+    </section>
+
+    <section id="pricing" class="pricing" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading">Per-Bug Pricing Comparison</h2>
+      <ul class="price-rows">
+        <li>
+          <span class="label">First 10 Bugs / Month</span>
+          <span class="value">Completely Free</span>
+        </li>
+        <li>
+          <span class="label">Production Tier</span>
+          <span class="value">$5 per verified bug signature thereafter</span>
+        </li>
+      </ul>
+      <p class="benefit">
+        <strong>Key Benefit:</strong> Pay for issues resolved, not volume. No charges for
+        noisy, repetitive error logs or firehose traffic lines.
       </p>
     </section>
 
