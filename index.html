@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live App Manager — Zero-Log-Fee Mobile Telemetry API</title>
+  <meta name="description" content="Stateless mobile exception tracking engine using SHA-256 cryptographic top-frame signature deduplication to reduce log database expenses. 10 free unique bugs lifetime trial." />
+  <meta name="keywords" content="mobile exception tracker, react native error signature, stateless telemetry api, pay per bug fix, zero log fees, SHA-256 deduplication" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Live App Manager",
+    "operatingSystem": "iOS, Android, JavaScript, Node.js",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD",
+      "description": "10 free unique bugs lifetime trial sandbox"
+    },
+    "description": "Stateless mobile exception tracking engine using SHA-256 cryptographic top-frame signature deduplication to reduce log database expenses."
+  }
+  </script>
+  <style>
+    :root {
+      --bg-0: #0a0c10;
+      --bg-1: #10141c;
+      --bg-2: #161c27;
+      --line: #2a3344;
+      --text: #f2f4f8;
+      --muted: #9aa3b5;
+      --accent: #5eead4;
+      --accent-dim: rgba(94, 234, 212, 0.12);
+      --code-bg: #0d1118;
+      --kw: #7dd3fc;
+      --str: #86efac;
+      --cm: #6b7280;
+      --fn: #c4b5fd;
+      --radius: 10px;
+      --sans: "Avenir Next", "Segoe UI Variable", "Segoe UI", "Helvetica Neue", sans-serif;
+      --mono: "Cascadia Code", "SF Mono", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(1200px 600px at 12% -10%, rgba(94, 234, 212, 0.08), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(125, 211, 252, 0.06), transparent 50%),
+        linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 45%, #0c1018 100%);
+    }
+
+    .shell {
+      width: min(720px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 5rem;
+    }
+
+    .brand {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 38rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.35rem;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #041016;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.35), 0 12px 40px rgba(94, 234, 212, 0.15);
+    }
+
+    .cta:hover {
+      background: #99f6e4;
+      transform: translateY(-1px);
+    }
+
+    .cta:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 2.75rem 0;
+      border: 0;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+      color: var(--text);
+    }
+
+    section p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1rem;
+    }
+
+    section + section {
+      margin-top: 2.25rem;
+    }
+
+    .panel {
+      margin-top: 2.5rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(22, 28, 39, 0.65);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-2);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .panel-head .tag {
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 1.15rem 1.2rem 1.35rem;
+      overflow-x: auto;
+      background: var(--code-bg);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #e5e7eb;
+    }
+
+    code { font-family: var(--mono); }
+
+    .tok-cm { color: var(--cm); }
+    .tok-kw { color: var(--kw); }
+    .tok-fn { color: var(--fn); }
+    .tok-str { color: var(--str); }
+    .tok-pun { color: #94a3b8; }
+
+    .foot {
+      margin-top: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: #64748b;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 520px) {
+      .shell { width: min(100%, calc(100% - 1.5rem)); padding-top: 2.25rem; }
+      pre { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <p class="brand">live-app-manager · npm</p>
+
+    <h1>Live App Manager — Zero-Log-Fee Mobile Telemetry API</h1>
+    <p class="lede">
+      Stateless exception telemetry for mobile and JS runtimes.
+      Collapse noisy crash loops into unique root-cause signatures — not a log firehose bill.
+    </p>
+
+    <a class="cta" href="/dashboard/user">Go to User Dashboard</a>
+
+    <hr class="divider" />
+
+    <section>
+      <h2>Cryptographic Error Grouping &amp; Deduplication Engine</h2>
+      <p>
+        Live App Manager fingerprints each fault with SHA-256 over the trimmed
+        <code>errorType</code> concatenated with the first user-space, non-framework
+        stack frame. Frames that match common infrastructure noise
+        (<code>node_modules</code>, React / React Native, axios, lodash,
+        <code>node:internal</code>, and similar wrappers) are skipped top-down until
+        application code is found. Dynamic <code>message</code> text, device properties,
+        and localized timestamps are deliberately excluded from the hash so variable
+        payload fields cannot inflate the signature index — yielding pure architectural
+        deduplication at the edge.
+      </p>
+    </section>
+
+    <section>
+      <h2>The 10 Free Bugs Sandbox Lifetime Trial</h2>
+      <p>
+        Monetization is signature-based, not volume-based. The first
+        <strong>10 unique root bug signatures</strong> per workspace are ingested
+        completely free (<code>201 Created</code> for new fingerprints,
+        <code>200 OK</code> for duplicates). The moment an unbilled workspace would
+        record an 11th unique signature, a global ingestion firewall engages:
+        every subsequent track call — new or duplicate — returns
+        <strong>HTTP 402 Payment Required</strong> until a payment card is securely
+        attached via the dashboard.
+      </p>
+    </section>
+
+    <section class="panel" aria-label="NPM usage example">
+      <div class="panel-head">
+        <span>example · trackLiveState(workspaceId, bugPayload)</span>
+        <span class="tag">live-app-manager</span>
+      </div>
+      <pre><code><span class="tok-cm">// npm install live-app-manager</span>
+<span class="tok-kw">import</span> { <span class="tok-fn">trackLiveState</span> } <span class="tok-kw">from</span> <span class="tok-str">"live-app-manager"</span><span class="tok-pun">;</span>
+
+<span class="tok-kw">const</span> workspaceId = <span class="tok-str">"your-workspace-uuid"</span><span class="tok-pun">;</span>
+
+<span class="tok-kw">await</span> <span class="tok-fn">trackLiveState</span>(workspaceId<span class="tok-pun">,</span> {
+  errorType<span class="tok-pun">:</span> err<span class="tok-pun">.</span>name<span class="tok-pun">,</span>
+  message<span class="tok-pun">:</span> err<span class="tok-pun">.</span>message<span class="tok-pun">,</span>       <span class="tok-cm">// mandatory</span>
+  stackTrace<span class="tok-pun">:</span> err<span class="tok-pun">.</span>stack ?? String(err)<span class="tok-pun">,</span>
+})<span class="tok-pun">;</span>
+<span class="tok-cm">// → POST /api/v1/:workspaceId/track  ·  keepalive transport</span>
+<span class="tok-cm">// → 201 new · 200 duplicate · 402 sandbox locked</span></code></pre>
+    </section>
+
+    <p class="foot">MIT · Studio / Open Source Telemetry Team · zero log fees · pay-per-bug-fix</p>
+  </main>
+</body>
+</html>
